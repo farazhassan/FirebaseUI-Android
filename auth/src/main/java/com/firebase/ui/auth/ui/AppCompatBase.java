@@ -14,18 +14,32 @@
 
 package com.firebase.ui.auth.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.RestrictTo;
 
 import com.firebase.ui.auth.R;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 @SuppressWarnings("Registered")
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 public class AppCompatBase extends HelperActivityBase {
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.FirebaseUI); // Provides default values
-        setTheme(getFlowHolder().getArguments().themeId);
+    protected void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+        configureTheme();
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    private void configureTheme() {
+        setTheme(R.style.FirebaseUI); // Provides default values
+        setTheme(getFlowParams().themeId);
+    }
+
 }

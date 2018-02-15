@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/phone_button"
-    style="@style/FirebaseUI.Button.AccountChooser.PhoneButton"
+    style="@style/FirebaseUI.AccountChooserButton.Phone"
     android:text="@string/fui_sign_in_with_phone"
-    tools:ignore="UnusedIds" /> <!-- Used in tests -->
+    fontPath="fonts/Raleway-Regular.otf"
+    tools:ignore="MissingPrefix, UnusedIds" /> <!-- Used in tests -->

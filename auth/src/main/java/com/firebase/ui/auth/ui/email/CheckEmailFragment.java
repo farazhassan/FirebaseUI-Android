@@ -35,6 +35,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
+import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+
 /**
  * Fragment that shows a form with an email field and checks for existing accounts with that email.
  * <p>
@@ -105,6 +107,8 @@ public class CheckEmailFragment extends FragmentBase implements
         mEmailFieldValidator = new EmailFieldValidator(mEmailLayout);
         mEmailLayout.setOnClickListener(this);
         mEmailEditText.setOnClickListener(this);
+
+        mEmailLayout.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
 
         ImeHelper.setImeOnDoneListener(mEmailEditText, this);
 

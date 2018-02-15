@@ -1,0 +1,46 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layerType="software"
+        android:id="@+id/fui_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fui_idp_button_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/text_or"
+        app:layout_constraintEnd_toStartOf="@+id/text_or"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_or"/>
+
+    <TextView
+        android:id="@+id/text_or"
+        fontPath="fonts/Raleway-Regular.otf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fui_auth_method_button_drawablePadding"
+        android:layout_marginStart="@dimen/fui_auth_method_button_drawablePadding"
+        android:text="@string/fui_sign_in_or"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fui_view2"
+        app:layout_constraintStart_toEndOf="@+id/fui_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingPrefix"/>
+
+    <View
+        android:layerType="software"
+        android:id="@+id/fui_view2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fui_idp_button_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/text_or"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_or"
+        app:layout_constraintTop_toTopOf="@+id/text_or"/>
+
+</android.support.constraint.ConstraintLayout>

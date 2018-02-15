@@ -23,8 +23,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.RestrictTo;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.firebase.ui.auth.R;
@@ -39,6 +43,8 @@ import com.firebase.ui.auth.util.ui.fieldvalidators.EmailFieldValidator;
 import com.firebase.ui.auth.viewmodel.email.RecoverPasswordHandler;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+
+import uk.co.chrisjenx.calligraphy.TypefaceUtils;
 
 /**
  * Activity to initiate the "forgot password" flow by asking for the user's email.
@@ -61,6 +67,18 @@ public class RecoverPasswordActivity extends AppCompatBase implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fui_forgot_password_layout);
+
+        // Hide keyboard
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
 
         mHandler = ViewModelProviders.of(this).get(RecoverPasswordHandler.class);
         mHandler.init(getFlowHolder().getArguments());
@@ -90,6 +108,8 @@ public class RecoverPasswordActivity extends AppCompatBase implements View.OnCli
         mEmailEditText = findViewById(R.id.email);
         mEmailFieldValidator = new EmailFieldValidator(mEmailInputLayout);
 
+        mEmailInputLayout.setTypeface(TypefaceUtils.load(getAssets(), "fonts/Raleway-Regular.otf"));
+
         String email = getIntent().getStringExtra(ExtraConstants.EXTRA_EMAIL);
         if (email != null) {
             mEmailEditText.setText(email);
@@ -97,6 +117,17 @@ public class RecoverPasswordActivity extends AppCompatBase implements View.OnCli
 
         ImeHelper.setImeOnDoneListener(mEmailEditText, this);
         findViewById(R.id.button_done).setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

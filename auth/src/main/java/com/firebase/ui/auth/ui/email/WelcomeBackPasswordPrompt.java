@@ -19,16 +19,20 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -49,6 +53,8 @@ import com.firebase.ui.auth.util.ui.ImeHelper;
 import com.firebase.ui.auth.viewmodel.PendingResolution;
 import com.firebase.ui.auth.viewmodel.email.WelcomeBackPasswordHandler;
 import com.google.firebase.auth.AuthCredential;
+
+import uk.co.chrisjenx.calligraphy.TypefaceUtils;
 
 /**
  * Activity to link a pre-existing email/password account to a new IDP sign-in by confirming the
@@ -85,8 +91,19 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
         mIdpResponse = IdpResponse.fromResultIntent(getIntent());
         mEmail = mIdpResponse.getEmail();
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+
         mPasswordLayout = findViewById(R.id.password_layout);
         mPasswordField = findViewById(R.id.password);
+
+        mPasswordLayout.setTypeface(TypefaceUtils.load(getAssets(),"fonts/Raleway-Regular.otf"));
 
         ImeHelper.setImeOnDoneListener(mPasswordField, this);
 
@@ -103,9 +120,12 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
         TextView bodyTextView = findViewById(R.id.welcome_back_password_body);
         bodyTextView.setText(spannableStringBuilder);
 
+        TextView textTroubleSignIn = findViewById(R.id.trouble_signing_in);
+        textTroubleSignIn.setPaintFlags(textTroubleSignIn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         // Click listeners
         findViewById(R.id.button_done).setOnClickListener(this);
-        findViewById(R.id.trouble_signing_in).setOnClickListener(this);
+        textTroubleSignIn.setOnClickListener(this);
 
         // Initialize ViewModel with arguments
         mHandler = ViewModelProviders.of(this).get(WelcomeBackPasswordHandler.class);
@@ -127,6 +147,17 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
                 onAuthResult(resource);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

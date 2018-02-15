@@ -16,24 +16,28 @@
 
     <!-- Auth method picker -->
     <string name="fui_sign_in_with_google" translation_description="Sign in button text">Sign in with Google</string>
-    <string name="fui_sign_in_with_facebook" translation_description="Sign in button text">Sign in with Facebook</string>
+    <string name="fui_sign_in_with_facebook" translation_description="Sign in button text">Continue with Facebook</string>
+    <string name="fui_we_will_never_post_to_facebook" translation_description="Facebook sign in tip text">We\'ll never post to your Facebook</string>
     <string name="fui_sign_in_with_twitter" translation_description="Sign in button text">Sign in with Twitter</string>
-    <string name="fui_sign_in_with_email" translation_description="Sign in button text">Sign in with email</string>
+    <string name="fui_sign_in_with_email" translation_description="Sign in button text">Continue with email</string>
     <string name="fui_sign_in_with_phone" translation_description="Sign in button text">Sign in with phone</string>
+    <string name="fui_sign_in_or" translation_description="Sign in buttons divider text">Or</string>
 
     <!-- Email common-->
     <string name="fui_next_default" translation_description="Button text to continue">Next</string>
-    <string name="fui_email_hint" translation_description="Hint in email input field">Email</string>
+    <string name="fui_email_hint" translation_description="Hint in email input field">Email Address</string>
     <string name="fui_phone_hint" translation_description="Hint for phone input field">Phone Number</string>
     <string name="fui_password_hint" translation_description="Hint for password input field">Password</string>
     <string name="fui_required_field" translation_description="Inline error for required field">You can\'t leave this empty.</string>
     <string name="fui_invalid_email_address" translation_description="Inline error for invalid email address">That email address isn\'t correct</string>
     <string name="fui_missing_email_address" translation_description="Inline error for empty email address in input field">Enter your email address to continue</string>
     <string name="fui_progress_dialog_checking_accounts" translation_description="Progress dialog text while checking for existing accounts">Checking for existing accounts…</string>
+    <string name="fui_enter_email_to_continue" translation_description="Email instruction">Enter your email to continue</string>
 
     <!-- Email sign up -->
+    <string name="fui_welcome" translation_description="Welcome text">Welcome to TroveSkin</string>
     <string name="fui_title_register_email" translation_description="Title for signup form">Sign up</string>
-    <string name="fui_name_hint" translation_description="Hint for last name input field">First &amp; last name</string>
+    <string name="fui_name_hint" translation_description="Hint for last name input field">Full Name</string>
     <string name="fui_button_text_save" translation_description="Button text to save input form">Save</string>
     <string name="fui_progress_dialog_signing_up" translation_description="Dialog text while waiting for server's signup response">Signing up…</string>
     <plurals name="fui_error_weak_password" translation_description="Inline error for weak password">
@@ -63,7 +67,7 @@
         to sign in. Enter your password for that account.
     </string>
     <string name="fui_progress_dialog_signing_in" translation_description="Progress dialog text">Signing in…</string>
-    <string name="fui_trouble_signing_in" translation_description="Link leading to forgot password flow">Trouble signing in?</string>
+    <string name="fui_trouble_signing_in" translation_description="Link leading to forgot password flow">Forgot password?</string>
 
     <!-- Password recovery -->
     <string name="fui_title_recover_password_activity" translation_description="Recover password screen title">Recover password</string>

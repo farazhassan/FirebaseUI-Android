@@ -1,0 +1,11 @@
+<TextView
+    fontPath="fonts/Raleway-Regular.otf"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="@dimen/fui_auth_method_button_margin"
+    android:layout_marginTop="@dimen/fui_auth_method_button_margin"
+    android:text="@string/fui_we_will_never_post_to_facebook"
+    tools:ignore="MissingPrefix"/>

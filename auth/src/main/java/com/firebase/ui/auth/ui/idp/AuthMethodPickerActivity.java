@@ -124,7 +124,8 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
         }
 
         ViewGroup btnHolder = findViewById(R.id.btn_holder);
-        for (final Provider provider : mProviders) {
+        for (int i = 0; i < mProviders.size(); i++) {
+            final Provider provider = mProviders.get(i);
             View loginButton = getLayoutInflater()
                     .inflate(provider.getButtonLayout(), btnHolder, false);
 
@@ -141,6 +142,18 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
                 ((IdpProvider) provider).setAuthenticationCallback(this);
             }
             btnHolder.addView(loginButton);
+
+            if (provider instanceof FacebookProvider) {
+                View facebookNote = getLayoutInflater()
+                        .inflate(R.layout.fui_idp_button_facebook_note, btnHolder, false);
+                btnHolder.addView(facebookNote);
+            }
+
+            if (mProviders.size() > 1 && i != mProviders.size() - 1) {
+                View divider = getLayoutInflater()
+                        .inflate(R.layout.fui_idp_auth_button_divider, btnHolder, false);
+                btnHolder.addView(divider);
+            }
         }
     }
 

@@ -13,6 +13,7 @@
     <string name="fui_sign_in_with_email" translation_description="Sign in button text">Login dengan email</string>
     <string name="fui_sign_in_with_phone" translation_description="Sign in button text">Login dengan nomor telepon</string>
     <string name="fui_next_default" translation_description="Button text to continue">Berikutnya</string>
+    <string name="fui_enter_email_to_continue" translation_description="Email instruction">Masukkan email Anda untuk melanjutkan</string>
     <string name="fui_email_hint" translation_description="Hint in email input field">Email</string>
     <string name="fui_phone_hint" translation_description="Hint for phone input field">Nomor Telepon</string>
     <string name="fui_password_hint" translation_description="Hint for password input field">Sandi</string>
@@ -37,7 +38,7 @@
     <string name="fui_welcome_back_idp_prompt" translation_description="Message to users that need to signin using existing IDP accounts">Anda telah menggunakan %1$s. Login dengan %2$s untuk melanjutkan.</string>
     <string name="fui_welcome_back_password_prompt_body" translation_description="Message to users that need to signin using existing email accounts">Anda telah menggunakan %1$s untuk login. Masukkan sandi untuk akun tersebut.</string>
     <string name="fui_progress_dialog_signing_in" translation_description="Progress dialog text">Login…</string>
-    <string name="fui_trouble_signing_in" translation_description="Link leading to forgot password flow">Terjadi masalah saat login?</string>
+    <string name="fui_trouble_signing_in" translation_description="Link leading to forgot password flow">Lupa kata sandi?</string>
     <string name="fui_title_recover_password_activity" translation_description="Recover password screen title">Pulihkan sandi</string>
     <string name="fui_title_confirm_recover_password" translation_description="Password recovery confirmation message">Periksa email Anda</string>
     <string name="fui_password_recovery_body" translation_description="Password recovery message body">Dapatkan petunjuk yang dikirimkan ke email ini yang menjelaskan cara menyetel ulang sandi Anda.</string>

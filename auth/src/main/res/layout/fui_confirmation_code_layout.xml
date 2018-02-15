@@ -13,20 +13,22 @@
         <TextView
             android:id="@+id/header"
             style="@style/FirebaseUI.Text.T08"
+            fontPath="fonts/Raleway-Regular.otf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fui_enter_confirmation_code"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:ignore="MissingPrefix"/>
 
         <TextView
             android:id="@+id/edit_phone_number"
             style="@style/FirebaseUI.Text.T08"
+            fontPath="fonts/Raleway-Regular.otf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/fui_linkColor"
             app:layout_constraintTop_toBottomOf="@+id/header"
-            tools:ignore="SelectableText" />
+            tools:ignore="MissingPrefix,SelectableText"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/confirmation_code_layout"
@@ -48,20 +50,23 @@
                 android:inputType="number"
                 android:textSize="32sp"
                 android:typeface="monospace"
-                app:spacingProportion="1.1" />
+                app:spacingProportion="1.1"/>
 
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/submit_confirmation_code"
             style="@style/FirebaseUI.VerifyPhoneButton"
+            fontPath="fonts/Raleway-Regular.otf"
             android:layout_gravity="end"
             android:text="@string/fui_continue_phone_login"
-            app:layout_constraintTop_toBottomOf="@+id/confirmation_code_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/confirmation_code_layout"
+            tools:ignore="MissingPrefix"/>
 
         <TextView
             android:id="@+id/ticker"
             style="@style/FirebaseUI.Text.T08"
+            fontPath="fonts/Raleway-Regular.otf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fui_field_padding_vert"
@@ -69,14 +74,16 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="?attr/android:textColorSecondary"
             android:textIsSelectable="false"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/submit_confirmation_code"
-            tools:text="Resend in 0:01" />
+            tools:ignore="MissingPrefix,SelectableText"
+            tools:text="Resend in 0:01"/>
 
         <TextView
             android:id="@+id/resend_code"
             style="@style/FirebaseUI.Text.T08"
+            fontPath="fonts/Raleway-Regular.otf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fui_field_padding_vert"
@@ -84,17 +91,18 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/fui_linkColor"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ticker"
-            tools:text="Resend code" />
+            tools:ignore="MissingPrefix"
+            tools:text="Resend code"/>
 
         <android.support.constraint.Barrier
             android:id="@+id/tos_barrier"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="ticker,resend_code" />
+            app:constraint_referenced_ids="ticker,resend_code"/>
 
         <TextView
             android:id="@+id/create_account_tos"
@@ -104,7 +112,7 @@
             android:layout_marginTop="@dimen/fui_field_padding_vert"
             android:textIsSelectable="false"
             app:layout_constraintTop_toBottomOf="@+id/tos_barrier"
-            tools:text="@string/fui_create_account_preamble_tos_and_pp" />
+            tools:text="@string/fui_create_account_preamble_tos_and_pp"/>
 
     </android.support.constraint.ConstraintLayout>
 

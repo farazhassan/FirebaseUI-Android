@@ -44,6 +44,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
+import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+
 /**
  * Fragment to display an email/name/password sign up form for new users.
  */
@@ -111,6 +113,11 @@ public class RegisterEmailFragment extends FragmentBase implements
         mEmailInput = v.findViewById(R.id.email_layout);
         mNameInput = v.findViewById(R.id.name_layout);
         mPasswordInput = v.findViewById(R.id.password_layout);
+        TextInputLayout mNameInput = v.findViewById(R.id.name_layout);
+
+        mEmailInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
+        mNameInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
+        mPasswordInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
 
         mPasswordFieldValidator = new PasswordFieldValidator(
                 mPasswordInput,
@@ -122,9 +129,9 @@ public class RegisterEmailFragment extends FragmentBase implements
 
         ImeHelper.setImeOnDoneListener(mPasswordEditText, this);
 
-        mEmailEditText.setOnFocusChangeListener(this);
+        /*mEmailEditText.setOnFocusChangeListener(this);
         mNameEditText.setOnFocusChangeListener(this);
-        mPasswordEditText.setOnFocusChangeListener(this);
+        mPasswordEditText.setOnFocusChangeListener(this);*/
         v.findViewById(R.id.button_create).setOnClickListener(this);
 
         // Only show the name field if required
@@ -155,13 +162,13 @@ public class RegisterEmailFragment extends FragmentBase implements
         }
 
         // See http://stackoverflow.com/questions/11082341/android-requestfocus-ineffective#comment51774752_11082523
-        if (!requireName || !TextUtils.isEmpty(mNameEditText.getText())) {
+        /*if (!requireName || !TextUtils.isEmpty(mNameEditText.getText())) {
             safeRequestFocus(mPasswordEditText);
         } else if (!TextUtils.isEmpty(mEmailEditText.getText())) {
             safeRequestFocus(mNameEditText);
         } else {
             safeRequestFocus(mEmailEditText);
-        }
+        }*/
 
         return v;
 

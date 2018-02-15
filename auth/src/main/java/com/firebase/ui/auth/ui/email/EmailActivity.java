@@ -21,6 +21,9 @@ import android.support.annotation.RestrictTo;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -67,6 +70,15 @@ public class EmailActivity extends AppCompatBase implements
         // Get email from intent (can be null)
         String email = getIntent().getExtras().getString(ExtraConstants.EXTRA_EMAIL);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+
         // Start with check email
         CheckEmailFragment fragment = CheckEmailFragment.newInstance(getFlowParams(), email);
         getSupportFragmentManager().beginTransaction()
@@ -89,6 +101,17 @@ public class EmailActivity extends AppCompatBase implements
             case RC_WELCOME_BACK_IDP:
                 finish(resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
