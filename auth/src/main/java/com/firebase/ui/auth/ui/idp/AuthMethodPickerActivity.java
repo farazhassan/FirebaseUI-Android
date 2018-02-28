@@ -84,13 +84,6 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
         int logoId = getFlowParams().logoId;
         if (logoId == AuthUI.NO_LOGO) {
             findViewById(R.id.logo).setVisibility(View.GONE);
-
-            ConstraintLayout layout = findViewById(R.id.root);
-            ConstraintSet constraints = new ConstraintSet();
-            constraints.clone(layout);
-            constraints.setHorizontalBias(R.id.container, 0.5f);
-            constraints.setVerticalBias(R.id.container, 0.5f);
-            constraints.applyTo(layout);
         } else {
             ImageView logo = findViewById(R.id.logo);
             logo.setImageResource(logoId);

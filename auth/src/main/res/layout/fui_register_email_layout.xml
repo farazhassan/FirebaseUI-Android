@@ -7,29 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/text_welcome"
-        style="@style/FirebaseUI.Text.BodyText"
-        fontPath="fonts/Raleway-Regular.otf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/fui_email_padding_horiz"
-        android:layout_marginRight="@dimen/fui_email_padding_horiz"
-        android:layout_marginTop="@dimen/fui_body_padding_bottom"
-        android:text="@string/fui_welcome"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingPrefix"/>
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/button_create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_welcome">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,6 +22,21 @@
             android:layout_marginRight="@dimen/fui_email_padding_horiz"
             android:focusableInTouchMode="true">
 
+            <TextView
+                android:id="@+id/text_welcome"
+                style="@style/FirebaseUI.Text.BodyText"
+                fontPath="fonts/Raleway-Regular.otf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fui_body_padding_bottom"
+                android:text="@string/fui_welcome"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingPrefix"/>
+
             <!-- Since the TextInputLayouts change size based on whether or not an error
                 is showing we use a relative layout to position them absolutely -->
             <android.support.design.widget.TextInputLayout
@@ -45,20 +44,25 @@
                 style="@style/FirebaseUI.TextInputLayout.EmailField"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fui_body_padding_bottom"
+                android:layout_marginTop="40dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:theme="@style/FirebaseUI.TextInputLayout.Theme"
                 android:transitionGroup="true"
                 android:transitionName="email_field"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_welcome"
                 tools:ignore="UnusedAttribute">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/email"
                     style="@style/FirebaseUI.TextInputEditText.EmailField"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
                     android:textColor="@color/fui_input_text_color"
+                    android:textSize="22sp"
                     tools:ignore="MissingPrefix"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -69,6 +73,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fui_body_padding_bottom"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:theme="@style/FirebaseUI.TextInputLayout.Theme"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +84,10 @@
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/name"
                     style="@style/FirebaseUI.TextInputEditText.NameField"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
                     android:textColor="@color/fui_input_text_color"
+                    android:textSize="22sp"
                     tools:ignore="MissingPrefix"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -89,6 +98,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fui_body_padding_bottom"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:theme="@style/FirebaseUI.TextInputLayout.Theme"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +111,10 @@
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password"
                     style="@style/FirebaseUI.TextInputEditText.PasswordField"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
                     android:textColor="@color/fui_input_text_color"
+                    android:textSize="22sp"
                     tools:ignore="MissingPrefix"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -113,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fui_body_padding_bottom"
                 android:textIsSelectable="false"
+                android:textSize="15sp"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/password_layout"
                 tools:ignore="MissingPrefix"

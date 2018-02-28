@@ -19,6 +19,7 @@
         android:layout_marginTop="@dimen/fui_body_padding_bottom"
         android:text="@string/fui_enter_email_to_continue"
         android:textColor="@android:color/white"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/fui_email_padding_horiz"
         android:layout_marginRight="@dimen/fui_email_padding_horiz"
-        android:layout_marginTop="@dimen/fui_body_padding_bottom"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
         android:theme="@style/FirebaseUI.TextInputLayout.Theme"
         android:transitionGroup="true"
         android:transitionName="email_field"
@@ -44,12 +47,16 @@
         <android.support.design.widget.TextInputEditText
             android:id="@+id/email"
             style="@style/FirebaseUI.TextInputEditText.EmailField"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
             android:textColor="@color/fui_input_text_color"
+            android:textSize="22sp"
             tools:ignore="MissingPrefix"/>
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.v7.widget.AppCompatButton
+        android:textSize="15sp"
         android:id="@+id/button_next"
         style="@style/FirebaseUI.SignInButton"
         fontPath="fonts/Raleway-SemiBold.ttf"

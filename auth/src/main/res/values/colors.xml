@@ -14,7 +14,10 @@
     <color name="fui_input_normal_color">#7FFFFFFF</color>
     <color name="fui_input_highlight_color">@android:color/white</color>
 
-    <color name="fui_buttonDivider">#BEBEBE</color>
+    <color name="fui_auth_method_general_text_color">#4D4549</color>
+    <color name="fui_auth_method_facebook_note_color">#787878</color>
+
+    <color name="fui_buttonDivider">#A6A8AB</color>
     <color name="fui_buttonShadow">#64BEBEBE</color>
     <color name="fui_bgEmail">#878AFA</color>
     <color name="fui_bgEmailFill">#ffffff</color>

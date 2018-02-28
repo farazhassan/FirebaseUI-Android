@@ -12,6 +12,7 @@
     <string name="fui_sign_in_with_twitter" translation_description="Sign in button text">Login dengan Twitter</string>
     <string name="fui_sign_in_with_email" translation_description="Sign in button text">Login dengan email</string>
     <string name="fui_sign_in_with_phone" translation_description="Sign in button text">Login dengan nomor telepon</string>
+    <string name="fui_sign_one_step_away_from_report" translation_description="Sign in hint text">Selangkah lagi melihat laporan kulitmu</string>
     <string name="fui_next_default" translation_description="Button text to continue">Berikutnya</string>
     <string name="fui_enter_email_to_continue" translation_description="Email instruction">Masukkan email Anda untuk melanjutkan</string>
     <string name="fui_email_hint" translation_description="Hint in email input field">Email</string>

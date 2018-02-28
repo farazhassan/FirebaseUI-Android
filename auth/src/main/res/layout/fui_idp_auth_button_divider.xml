@@ -6,11 +6,11 @@
     android:layout_height="wrap_content">
 
     <View
-        android:layerType="software"
         android:id="@+id/fui_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fui_idp_button_divider"
+        android:layerType="software"
         app:layout_constraintBottom_toBottomOf="@+id/text_or"
         app:layout_constraintEnd_toStartOf="@+id/text_or"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -26,6 +26,8 @@
         android:layout_marginStart="@dimen/fui_auth_method_button_drawablePadding"
         android:text="@string/fui_sign_in_or"
         android:textAllCaps="true"
+        android:textColor="@color/fui_auth_method_general_text_color"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fui_view2"
         app:layout_constraintStart_toEndOf="@+id/fui_view"
@@ -33,11 +35,11 @@
         tools:ignore="MissingPrefix"/>
 
     <View
-        android:layerType="software"
         android:id="@+id/fui_view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fui_idp_button_divider"
+        android:layerType="software"
         app:layout_constraintBottom_toBottomOf="@+id/text_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_or"

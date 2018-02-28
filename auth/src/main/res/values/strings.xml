@@ -22,6 +22,7 @@
     <string name="fui_sign_in_with_email" translation_description="Sign in button text">Continue with email</string>
     <string name="fui_sign_in_with_phone" translation_description="Sign in button text">Sign in with phone</string>
     <string name="fui_sign_in_or" translation_description="Sign in buttons divider text">Or</string>
+    <string name="fui_sign_one_step_away_from_report" translation_description="Sign in hint text">One step away from seeing your skin report</string>
 
     <!-- Email common-->
     <string name="fui_next_default" translation_description="Button text to continue">Next</string>

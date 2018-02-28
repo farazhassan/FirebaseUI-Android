@@ -8,4 +8,6 @@
     android:layout_marginBottom="@dimen/fui_auth_method_button_margin"
     android:layout_marginTop="@dimen/fui_auth_method_button_margin"
     android:text="@string/fui_we_will_never_post_to_facebook"
+    android:textColor="@color/fui_auth_method_facebook_note_color"
+    android:textSize="13sp"
     tools:ignore="MissingPrefix"/>

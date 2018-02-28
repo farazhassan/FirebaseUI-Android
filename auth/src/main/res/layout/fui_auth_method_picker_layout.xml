@@ -6,34 +6,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:clipChildren="false"
     android:clipToPadding="false">
 
     <ImageView
         android:id="@+id/logo"
         style="@style/FirebaseUI.AuthMethodPicker.Logo"
-        app:layout_constraintBottom_toTopOf="@+id/container"
+        app:layout_constraintBottom_toTopOf="@+id/text_one_step_form_report"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:ignore="ContentDescription"/> <!-- TODO remove once the bug is fixed: https://issuetracker.google.com/issues/38281866-->
 
-    <ScrollView
-        android:id="@+id/container"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_one_step_form_report"
+        fontPath="fonts/Raleway-Regular.otf"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/fui_email_padding_horiz"
-        android:layout_marginRight="@dimen/fui_email_padding_horiz"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/fui_sign_one_step_away_from_report"
+        android:textColor="@color/fui_auth_method_general_text_color"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_holder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_goneMarginTop="40dp"
+        tools:ignore="MissingPrefix"/>
+
+    <LinearLayout
+        android:id="@+id/btn_holder"
+        style="@style/FirebaseUI.AuthMethodPicker.ButtonHolder"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="@dimen/fui_email_padding_horiz"
+        android:paddingRight="@dimen/fui_email_padding_horiz"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7">
-
-        <LinearLayout
-            android:id="@+id/btn_holder"
-            style="@style/FirebaseUI.AuthMethodPicker.ButtonHolder"/>
-
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/text_one_step_form_report"/>
 
 </android.support.constraint.ConstraintLayout>
