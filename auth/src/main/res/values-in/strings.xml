@@ -47,6 +47,8 @@
     <string name="fui_confirm_recovery_body" translation_description="Alert dialog displayed after password recovery email is sent">Ikuti petunjuk yang dikirimkan ke %1$s untuk memulihkan sandi Anda.</string>
     <string name="fui_progress_dialog_sending" translation_description="Progress dialog while password recovery email is being sent">Mengirim…</string>
     <string name="fui_error_email_does_not_exist" translation_description="Inline error when user attempt signin with invalid account">Alamat email tidak cocok dengan akun yang ada</string>
+    <string name="fui_error_unknown">Terjadi error yang tidak diketahui.</string>
+    <string name="fui_error_invalid_password">Sandi salah.</string>
     <string name="fui_accessibility_logo" translation_description="Content description for app logo">Logo aplikasi</string>
     <string name="fui_signed_in_with_specific_account" translation_description="Post signin message showing method of authentication">Login sebagai %1$s</string>
     <string name="fui_verify_phone_number_title" translation_description="Phone number entry form title">Masukkan nomor telepon Anda</string>
