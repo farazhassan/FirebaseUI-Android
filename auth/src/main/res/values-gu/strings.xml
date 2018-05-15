@@ -1,11 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="fui_progress_dialog_loading">લોડ કરી રહ્યું છે…</string>
     <string name="fui_sign_in_default">સાઇન ઇન કરો</string>
     <string name="fui_idp_name_google">Google</string>
     <string name="fui_idp_name_facebook">Facebook</string>
     <string name="fui_idp_name_twitter">Twitter</string>
-    <string name="fui_provider_name_email">ઇમેઇલ</string>
-    <string name="fui_provider_name_phone">ફોન</string>
     <string name="fui_sign_in_with_google">Google વડે સાઇન ઇન કરો</string>
     <string name="fui_sign_in_with_facebook">Facebook વડે સાઇન ઇન કરો</string>
     <string name="fui_sign_in_with_twitter">Twitter વડે સાઇન ઇન કરો</string>
@@ -25,7 +23,6 @@
     <string name="fui_progress_dialog_signing_up">સાઇન અપ કરી રહ્યાં છીએ…</string>
     <plurals name="fui_error_weak_password"> <item quantity="one">પાસવર્ડ પૂરતો સશક્ત નથી. ઓછામાં ઓછા %1$d અક્ષર અને વર્ણ તથા સંખ્યાઓના સંયોજનનો ઉપયોગ કરો</item> <item quantity="other">પાસવર્ડ પૂરતો સશક્ત નથી. ઓછામાં ઓછા %1$d અક્ષર અને વર્ણ તથા સંખ્યાઓના સંયોજનનો ઉપયોગ કરો</item> </plurals>
     <string name="fui_email_account_creation_error">ઇમેઇલ એકાઉન્ટની નોંધણી અસફળ</string>
-    <string name="fui_error_user_collision">તે ઇમેઇલ ઍડ્રેસ ધરાવતું એક એકાઉન્ટ પહેલાંથી જ અસ્તિત્વમાં છે.</string>
     <string name="fui_create_account_preamble_tos_and_pp">%1$s ટૅપ કરીને, તમે સૂચવો છો કે તમે %2$s અને %3$s સાથે સંમત થાઓ છો.</string>
     <string name="fui_create_account_preamble_tos_only">%1$s ટૅપ કરીને, તમે સૂચવો છો કે તમે %2$s સાથે સંમત થાઓ છો.</string>
     <string name="fui_create_account_preamble_pp_only">%1$s ટૅપ કરીને, તમે સૂચવો છો કે તમે %2$s સાથે સંમત થાઓ છો.</string>
@@ -47,7 +44,6 @@
     <string name="fui_error_unknown">કોઈ અજ્ઞાત ભૂલ આવી છે.</string>
     <string name="fui_error_invalid_password">ખોટો પાસવર્ડ.</string>
     <string name="fui_accessibility_logo">ઍપ્લિકેશન લોગો</string>
-    <string name="fui_signed_in_with_specific_account">%1$s તરીકે સાઇન ઇન કર્યું</string>
     <string name="fui_verify_phone_number_title">તમારો ફોન નંબર દાખલ કરો</string>
     <string name="fui_invalid_phone_number">એક માન્ય ફોન નંબર દાખલ કરો</string>
     <string name="fui_enter_confirmation_code">અમે આ ફોન નંબર પર મોકલેલ 6-અંકનો કોડ દાખલ કરો</string>

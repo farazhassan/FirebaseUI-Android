@@ -2,6 +2,7 @@ package com.firebase.uidemo.database.firestore;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,7 +46,8 @@ public class FirestoreChatActivity extends AppCompatActivity
     private static final CollectionReference sChatCollection =
             FirebaseFirestore.getInstance().collection("chats");
     /** Get the last 50 chat messages ordered by timestamp . */
-    private static final Query sChatQuery = sChatCollection.orderBy("timestamp").limit(50);
+    private static final Query sChatQuery =
+            sChatCollection.orderBy("timestamp", Query.Direction.DESCENDING).limit(50);
 
     static {
         FirebaseFirestore.setLoggingEnabled(true);
@@ -64,13 +66,32 @@ public class FirestoreChatActivity extends AppCompatActivity
     TextView mEmptyListMessage;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
 
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        manager.setStackFromEnd(true);
+
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(manager);
+
+        mRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if (bottom < oldBottom) {
+                    mRecyclerView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mRecyclerView.smoothScrollToPosition(0);
+                        }
+                    }, 100);
+                }
+            }
+        });
 
         ImeHelper.setImeOnDoneListener(mMessageEdit, new ImeHelper.DonePressedListener() {
             @Override
@@ -117,7 +138,7 @@ public class FirestoreChatActivity extends AppCompatActivity
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
-                mRecyclerView.smoothScrollToPosition(adapter.getItemCount());
+                mRecyclerView.smoothScrollToPosition(0);
             }
         });
 

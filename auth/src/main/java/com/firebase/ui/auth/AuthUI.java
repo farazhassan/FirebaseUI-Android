@@ -31,8 +31,10 @@ import android.util.Log;
 
 import com.facebook.login.LoginManager;
 import com.firebase.ui.auth.data.model.FlowParameters;
-import com.firebase.ui.auth.provider.TwitterProvider;
+import com.firebase.ui.auth.data.remote.FacebookSignInHandler;
+import com.firebase.ui.auth.data.remote.TwitterSignInHandler;
 import com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity;
+import com.firebase.ui.auth.util.CredentialUtils;
 import com.firebase.ui.auth.util.ExtraConstants;
 import com.firebase.ui.auth.util.GoogleApiUtils;
 import com.firebase.ui.auth.util.Preconditions;
@@ -59,6 +61,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.auth.TwitterAuthProvider;
 import com.google.firebase.auth.UserInfo;
+import com.twitter.sdk.android.core.TwitterCore;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -147,7 +150,7 @@ public class AuthUI {
      * instead.
      */
     @Deprecated
-    public static final String EXTRA_DEFAULT_PHONE_NUMBER = ExtraConstants.EXTRA_PHONE;
+    public static final String EXTRA_DEFAULT_PHONE_NUMBER = ExtraConstants.PHONE;
 
     /**
      * Bundle key for the default phone country code parameter.
@@ -156,7 +159,7 @@ public class AuthUI {
      * String)} instead.
      */
     @Deprecated
-    public static final String EXTRA_DEFAULT_COUNTRY_CODE = ExtraConstants.EXTRA_COUNTRY_ISO;
+    public static final String EXTRA_DEFAULT_COUNTRY_CODE = ExtraConstants.COUNTRY_ISO;
 
     /**
      * Bundle key for the default national phone number parameter.
@@ -165,7 +168,7 @@ public class AuthUI {
      * String)} instead.
      */
     @Deprecated
-    public static final String EXTRA_DEFAULT_NATIONAL_NUMBER = ExtraConstants.EXTRA_NATIONAL_NUMBER;
+    public static final String EXTRA_DEFAULT_NATIONAL_NUMBER = ExtraConstants.NATIONAL_NUMBER;
 
     /**
      * Default value for logo resource, omits the logo from the {@link AuthMethodPickerActivity}.
@@ -177,10 +180,10 @@ public class AuthUI {
      */
     public static final Set<String> SUPPORTED_PROVIDERS =
             Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
-                    EmailAuthProvider.PROVIDER_ID,
                     GoogleAuthProvider.PROVIDER_ID,
                     FacebookAuthProvider.PROVIDER_ID,
                     TwitterAuthProvider.PROVIDER_ID,
+                    EmailAuthProvider.PROVIDER_ID,
                     PhoneAuthProvider.PROVIDER_ID
             )));
 
@@ -208,7 +211,11 @@ public class AuthUI {
         mApp = app;
         mAuth = FirebaseAuth.getInstance(mApp);
 
-        mAuth.setFirebaseUIVersion(BuildConfig.VERSION_NAME);
+        try {
+            mAuth.setFirebaseUIVersion(BuildConfig.VERSION_NAME);
+        } catch (Exception e) {
+            Log.e(TAG, "Couldn't set the FUI version.", e);
+        }
         mAuth.useAppLanguage();
     }
 
@@ -270,32 +277,36 @@ public class AuthUI {
      */
     @NonNull
     public Task<Void> signOut(@NonNull Context context) {
-        mAuth.signOut();
-
         Task<Void> maybeDisableAutoSignIn = GoogleApiUtils.getCredentialsClient(context)
                 .disableAutoSignIn()
-                .continueWithTask(new Continuation<Void, Task<Void>>() {
+                .continueWith(new Continuation<Void, Void>() {
                     @Override
-                    public Task<Void> then(@NonNull Task<Void> task) throws Exception {
+                    public Void then(@NonNull Task<Void> task) {
                         // We want to ignore a specific exception, since it's not a good reason
                         // to fail (see Issue 1156).
-                        if (!task.isSuccessful() && (task.getException() instanceof ApiException)) {
-                            ApiException ae = (ApiException) task.getException();
-                            if (ae.getStatusCode() == CommonStatusCodes.CANCELED) {
-                                Log.w(TAG, "Could not disable auto-sign in, maybe there are no " +
-                                    "SmartLock accounts available?", ae);
-
-                                return Tasks.forResult(null);
-                            }
+                        Exception e = task.getException();
+                        if (e instanceof ApiException
+                                && ((ApiException) e).getStatusCode() == CommonStatusCodes.CANCELED) {
+                            Log.w(TAG, "Could not disable auto-sign in, maybe there are no " +
+                                    "SmartLock accounts available?", e);
+                            return null;
                         }
 
-                        return task;
+                        return task.getResult();
                     }
                 });
 
         return Tasks.whenAll(
                 signOutIdps(context),
-                maybeDisableAutoSignIn);
+                maybeDisableAutoSignIn
+        ).continueWith(new Continuation<Void, Void>() {
+            @Override
+            public Void then(@NonNull Task<Void> task) {
+                task.getResult(); // Propagate exceptions
+                mAuth.signOut();
+                return null;
+            }
+        });
     }
 
     /**
@@ -323,21 +334,15 @@ public class AuthUI {
             @Override
             public Task<Void> then(@NonNull Task<Void> task) {
                 task.getResult(); // Propagate exception if there was one
-                return currentUser.delete();
-            }
-        }).continueWithTask(new Continuation<Void, Task<Void>>() {
-            @Override
-            public Task<Void> then(@NonNull Task<Void> task) {
-                task.getResult(); // Propagate exception if there was one
 
                 List<Task<?>> credentialTasks = new ArrayList<>();
                 for (Credential credential : credentials) {
                     credentialTasks.add(client.delete(credential));
                 }
                 return Tasks.whenAll(credentialTasks)
-                        .continueWithTask(new Continuation<Void, Task<Void>>() {
+                        .continueWith(new Continuation<Void, Void>() {
                             @Override
-                            public Task<Void> then(@NonNull Task<Void> task) {
+                            public Void then(@NonNull Task<Void> task) {
                                 Exception e = task.getException();
                                 Throwable t = e == null ? null : e.getCause();
                                 if (!(t instanceof ApiException)
@@ -346,33 +351,29 @@ public class AuthUI {
                                     // one. This can occur if we failed to save the credential or it
                                     // was deleted elsewhere. However, a lack of stored credential
                                     // doesn't mean fully deleting the user failed.
-                                    task.getResult();
+                                    return task.getResult();
                                 }
 
-                                return Tasks.forResult(null);
+                                return null;
                             }
                         });
+            }
+        }).continueWithTask(new Continuation<Void, Task<Void>>() {
+            @Override
+            public Task<Void> then(@NonNull Task<Void> task) {
+                task.getResult(); // Propagate exception if there was one
+                return currentUser.delete();
             }
         });
     }
 
     private Task<Void> signOutIdps(@NonNull Context context) {
-        try {
+        if (FacebookSignInHandler.IS_AVAILABLE) {
             LoginManager.getInstance().logOut();
-        } catch (NoClassDefFoundError e) {
-            // Do nothing: this is perfectly fine if the dev doesn't include Facebook/Twitter
-            // support
         }
-
-        try {
-            TwitterProvider.signOut(context);
-        } catch (NoClassDefFoundError e) {
-            // See comment above
-            // Note: we need to have separate try/catch statements since devs can include
-            // _either_ one of the providers. If one crashes, we still need to sign out of
-            // the other one.
+        if (TwitterSignInHandler.IS_AVAILABLE) {
+            TwitterCore.getInstance().getSessionManager().clearActiveSession();
         }
-
         return GoogleSignIn.getClient(context, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut();
     }
 
@@ -392,11 +393,13 @@ public class AuthUI {
             }
 
             String type = ProviderUtils.providerIdToAccountType(userInfo.getProviderId());
-
-            credentials.add(new Credential.Builder(
-                    user.getEmail() == null ? user.getPhoneNumber() : user.getEmail())
-                    .setAccountType(type)
-                    .build());
+            if (type == null) {
+                // Since the account type is null, we've got an email credential. Adding a fake
+                // password is the only way to tell Smart Lock that this is an email credential.
+                credentials.add(CredentialUtils.buildCredentialOrThrow(user, "pass", null));
+            } else {
+                credentials.add(CredentialUtils.buildCredentialOrThrow(user, null, type));
+            }
         }
 
         return credentials;
@@ -458,7 +461,7 @@ public class AuthUI {
             List<String> permissions;
             if (mProviderId.equals(GoogleAuthProvider.PROVIDER_ID)) {
                 Scope[] array = ((GoogleSignInOptions)
-                        mParams.getParcelable(ExtraConstants.EXTRA_GOOGLE_SIGN_IN_OPTIONS))
+                        mParams.getParcelable(ExtraConstants.GOOGLE_SIGN_IN_OPTIONS))
                         .getScopeArray();
 
                 List<String> scopes = new ArrayList<>();
@@ -467,7 +470,7 @@ public class AuthUI {
                 }
                 permissions = scopes;
             } else if (mProviderId.equals(FacebookAuthProvider.PROVIDER_ID)) {
-                permissions = mParams.getStringArrayList(ExtraConstants.EXTRA_FACEBOOK_PERMISSIONS);
+                permissions = mParams.getStringArrayList(ExtraConstants.FACEBOOK_PERMISSIONS);
             } else {
                 permissions = null;
             }
@@ -626,19 +629,19 @@ public class AuthUI {
              */
             @NonNull
             public EmailBuilder setAllowNewAccounts(boolean allow) {
-                getParams().putBoolean(ExtraConstants.EXTRA_ALLOW_NEW_EMAILS, allow);
+                getParams().putBoolean(ExtraConstants.ALLOW_NEW_EMAILS, allow);
                 return this;
             }
 
             /**
-             * Configures the requirement for the user to enter first and last name
-             * in the email sign up flow.
+             * Configures the requirement for the user to enter first and last name in the email
+             * sign up flow.
              * <p>
              * Name is required by default.
              */
             @NonNull
             public EmailBuilder setRequireName(boolean requireName) {
-                getParams().putBoolean(ExtraConstants.EXTRA_REQUIRE_NAME, requireName);
+                getParams().putBoolean(ExtraConstants.REQUIRE_NAME, requireName);
                 return this;
             }
         }
@@ -660,13 +663,13 @@ public class AuthUI {
             public PhoneBuilder setDefaultNumber(@NonNull String number) {
                 Preconditions.checkUnset(getParams(),
                         "Cannot overwrite previously set phone number",
-                        ExtraConstants.EXTRA_COUNTRY_ISO,
-                        ExtraConstants.EXTRA_NATIONAL_NUMBER);
+                        ExtraConstants.COUNTRY_ISO,
+                        ExtraConstants.NATIONAL_NUMBER);
                 if (!PhoneNumberUtils.isValid(number)) {
                     throw new IllegalStateException("Invalid phone number: " + number);
                 }
 
-                getParams().putString(ExtraConstants.EXTRA_PHONE, number);
+                getParams().putString(ExtraConstants.PHONE, number);
 
                 return this;
             }
@@ -682,13 +685,13 @@ public class AuthUI {
             public PhoneBuilder setDefaultNumber(@NonNull String iso, @NonNull String number) {
                 Preconditions.checkUnset(getParams(),
                         "Cannot overwrite previously set phone number",
-                        ExtraConstants.EXTRA_PHONE);
+                        ExtraConstants.PHONE);
                 if (!PhoneNumberUtils.isValidIso(iso)) {
                     throw new IllegalStateException("Invalid country iso: " + iso);
                 }
 
-                getParams().putString(ExtraConstants.EXTRA_COUNTRY_ISO, iso);
-                getParams().putString(ExtraConstants.EXTRA_NATIONAL_NUMBER, number);
+                getParams().putString(ExtraConstants.COUNTRY_ISO, iso);
+                getParams().putString(ExtraConstants.NATIONAL_NUMBER, number);
 
                 return this;
             }
@@ -703,14 +706,14 @@ public class AuthUI {
             public PhoneBuilder setDefaultCountryIso(@NonNull String iso) {
                 Preconditions.checkUnset(getParams(),
                         "Cannot overwrite previously set phone number",
-                        ExtraConstants.EXTRA_PHONE,
-                        ExtraConstants.EXTRA_COUNTRY_ISO,
-                        ExtraConstants.EXTRA_NATIONAL_NUMBER);
+                        ExtraConstants.PHONE,
+                        ExtraConstants.COUNTRY_ISO,
+                        ExtraConstants.NATIONAL_NUMBER);
                 if (!PhoneNumberUtils.isValidIso(iso)) {
                     throw new IllegalStateException("Invalid country iso: " + iso);
                 }
 
-                getParams().putString(ExtraConstants.EXTRA_COUNTRY_ISO, iso);
+                getParams().putString(ExtraConstants.COUNTRY_ISO, iso);
 
                 return this;
             }
@@ -756,13 +759,13 @@ public class AuthUI {
             public GoogleBuilder setSignInOptions(@NonNull GoogleSignInOptions options) {
                 Preconditions.checkUnset(getParams(),
                         "Cannot overwrite previously set sign-in options.",
-                        ExtraConstants.EXTRA_GOOGLE_SIGN_IN_OPTIONS);
+                        ExtraConstants.GOOGLE_SIGN_IN_OPTIONS);
 
                 GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(options);
                 builder.requestEmail().requestIdToken(getApplicationContext()
                         .getString(R.string.default_web_client_id));
                 getParams().putParcelable(
-                        ExtraConstants.EXTRA_GOOGLE_SIGN_IN_OPTIONS, builder.build());
+                        ExtraConstants.GOOGLE_SIGN_IN_OPTIONS, builder.build());
 
                 return this;
             }
@@ -770,7 +773,7 @@ public class AuthUI {
             @NonNull
             @Override
             public IdpConfig build() {
-                if (!getParams().containsKey(ExtraConstants.EXTRA_GOOGLE_SIGN_IN_OPTIONS)) {
+                if (!getParams().containsKey(ExtraConstants.GOOGLE_SIGN_IN_OPTIONS)) {
                     setScopes(Collections.<String>emptyList());
                 }
 
@@ -787,17 +790,12 @@ public class AuthUI {
             public FacebookBuilder() {
                 //noinspection deprecation taking a hit for the backcompat team
                 super(FacebookAuthProvider.PROVIDER_ID);
-
-                try {
-                    //noinspection unused to possibly throw
-                    Class c = com.facebook.FacebookSdk.class;
-                } catch (NoClassDefFoundError e) {
+                if (!FacebookSignInHandler.IS_AVAILABLE) {
                     throw new RuntimeException(
                             "Facebook provider cannot be configured " +
                                     "without dependency. Did you forget to add " +
                                     "'com.facebook.android:facebook-login:VERSION' dependency?");
                 }
-
                 Preconditions.checkConfigured(getApplicationContext(),
                         "Facebook provider unconfigured. Make sure to add a" +
                                 " `facebook_application_id` string. See the docs for more info:" +
@@ -818,7 +816,7 @@ public class AuthUI {
             @NonNull
             public FacebookBuilder setPermissions(@NonNull List<String> permissions) {
                 getParams().putStringArrayList(
-                        ExtraConstants.EXTRA_FACEBOOK_PERMISSIONS, new ArrayList<>(permissions));
+                        ExtraConstants.FACEBOOK_PERMISSIONS, new ArrayList<>(permissions));
                 return this;
             }
         }
@@ -830,17 +828,12 @@ public class AuthUI {
             public TwitterBuilder() {
                 //noinspection deprecation taking a hit for the backcompat team
                 super(TwitterAuthProvider.PROVIDER_ID);
-
-                try {
-                    //noinspection unused to possibly throw
-                    Class c = com.twitter.sdk.android.core.TwitterCore.class;
-                } catch (NoClassDefFoundError e) {
+                if (!TwitterSignInHandler.IS_AVAILABLE) {
                     throw new RuntimeException(
                             "Twitter provider cannot be configured " +
                                     "without dependency. Did you forget to add " +
                                     "'com.twitter.sdk.android:twitter-core:VERSION' dependency?");
                 }
-
                 Preconditions.checkConfigured(getApplicationContext(),
                         "Twitter provider unconfigured. Make sure to add your key and secret." +
                                 " See the docs for more info:" +

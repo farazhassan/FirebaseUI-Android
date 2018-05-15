@@ -16,6 +16,7 @@ package com.firebase.ui.auth.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 
 import com.firebase.ui.auth.R;
@@ -29,17 +30,12 @@ public class AppCompatBase extends HelperActivityBase {
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        configureTheme();
+        setTheme(R.style.FirebaseUI); // Provides default values
+        setTheme(getFlowParams().themeId);
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
-    private void configureTheme() {
-        setTheme(R.style.FirebaseUI); // Provides default values
-        setTheme(getFlowParams().themeId);
-    }
-
 }
