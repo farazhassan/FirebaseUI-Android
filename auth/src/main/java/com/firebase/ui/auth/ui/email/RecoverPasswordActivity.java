@@ -30,11 +30,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.firebase.ui.auth.R;
 import com.firebase.ui.auth.data.model.FlowParameters;
 import com.firebase.ui.auth.ui.AppCompatBase;
 import com.firebase.ui.auth.util.ExtraConstants;
+import com.firebase.ui.auth.util.data.PrivacyDisclosureUtils;
 import com.firebase.ui.auth.util.ui.ImeHelper;
 import com.firebase.ui.auth.util.ui.fieldvalidators.EmailFieldValidator;
 import com.firebase.ui.auth.viewmodel.ResourceObserver;
@@ -113,6 +115,10 @@ public class RecoverPasswordActivity extends AppCompatBase implements View.OnCli
 
         ImeHelper.setImeOnDoneListener(mEmailEditText, this);
         findViewById(R.id.button_done).setOnClickListener(this);
+
+        TextView footerText = findViewById(R.id.email_footer_tos_and_pp_text);
+        PrivacyDisclosureUtils.setupTermsOfServiceFooter(this, getFlowParams(), footerText,
+                android.R.color.white);
     }
 
     @Override

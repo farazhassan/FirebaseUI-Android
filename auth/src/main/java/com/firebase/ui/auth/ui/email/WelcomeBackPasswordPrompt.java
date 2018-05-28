@@ -35,7 +35,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.auth.IdpResponse;
@@ -43,6 +45,7 @@ import com.firebase.ui.auth.R;
 import com.firebase.ui.auth.data.model.FlowParameters;
 import com.firebase.ui.auth.ui.AppCompatBase;
 import com.firebase.ui.auth.util.ExtraConstants;
+import com.firebase.ui.auth.util.data.PrivacyDisclosureUtils;
 import com.firebase.ui.auth.util.data.ProviderUtils;
 import com.firebase.ui.auth.util.ui.ImeHelper;
 import com.firebase.ui.auth.viewmodel.ResourceObserver;
@@ -62,6 +65,8 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
     private IdpResponse mIdpResponse;
     private WelcomeBackPasswordHandler mHandler;
 
+    private Button mDoneButton;
+    private ProgressBar mProgressBar;
     private TextInputLayout mPasswordLayout;
     private EditText mPasswordField;
 
@@ -91,6 +96,8 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
             actionBar.setDisplayShowTitleEnabled(false);
         }
 
+        mDoneButton = findViewById(R.id.button_done);
+        mProgressBar = findViewById(R.id.top_progress_bar);
         mPasswordLayout = findViewById(R.id.password_layout);
         mPasswordField = findViewById(R.id.password);
 
@@ -116,8 +123,9 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
         textTroubleSignIn.setPaintFlags(textTroubleSignIn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         // Click listeners
-        findViewById(R.id.button_done).setOnClickListener(this);
         textTroubleSignIn.setOnClickListener(this);
+        mDoneButton.setOnClickListener(this);
+        findViewById(R.id.trouble_signing_in).setOnClickListener(this);
 
         // Initialize ViewModel with arguments
         mHandler = ViewModelProviders.of(this).get(WelcomeBackPasswordHandler.class);
@@ -137,6 +145,10 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
                 mPasswordLayout.setError(getString(getErrorMessage(e)));
             }
         });
+
+        TextView footerText = findViewById(R.id.email_footer_tos_and_pp_text);
+        PrivacyDisclosureUtils.setupTermsOfServiceFooter(this, getFlowParams(), footerText,
+                android.R.color.white);
     }
 
     @Override
@@ -196,5 +208,17 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
         } else if (id == R.id.trouble_signing_in) {
             onForgotPasswordClicked();
         }
+    }
+
+    @Override
+    public void showProgress(int message) {
+        mDoneButton.setEnabled(false);
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        mDoneButton.setEnabled(true);
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 }
