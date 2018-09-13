@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/facebook_button"
     style="@style/FirebaseUI.AccountChooserButton.Facebook"
-    fontPath="fonts/Raleway-SemiBold.ttf"
+    fontPath="fonts/Roboto-Medium.ttf"
     android:layout_marginBottom="0dp"
     android:text="@string/fui_sign_in_with_facebook"
     tools:ignore="MissingPrefix,UnusedIds"/> <!-- Used in tests -->

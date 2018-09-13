@@ -1,5 +1,5 @@
 <TextView
-    fontPath="fonts/Raleway-Regular.otf"
+    fontPath="fonts/Roboto-Regular.ttf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"

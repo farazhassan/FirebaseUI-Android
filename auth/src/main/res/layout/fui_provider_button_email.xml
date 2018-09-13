@@ -2,7 +2,7 @@
 <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
     android:id="@+id/email_button"
     style="@style/FirebaseUI.AccountChooserButton.Email"
-    fontPath="fonts/Raleway-SemiBold.ttf"
+    fontPath="fonts/Roboto-Medium.ttf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:text="@string/fui_sign_in_with_email"

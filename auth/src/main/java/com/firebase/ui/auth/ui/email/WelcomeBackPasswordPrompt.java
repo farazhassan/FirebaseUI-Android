@@ -101,7 +101,7 @@ public class WelcomeBackPasswordPrompt extends AppCompatBase
         mPasswordLayout = findViewById(R.id.password_layout);
         mPasswordField = findViewById(R.id.password);
 
-        mPasswordLayout.setTypeface(TypefaceUtils.load(getAssets(), "fonts/Raleway-Regular.otf"));
+        mPasswordLayout.setTypeface(TypefaceUtils.load(getAssets(), "fonts/Roboto-Regular.ttf"));
 
         ImeHelper.setImeOnDoneListener(mPasswordField, this);
 

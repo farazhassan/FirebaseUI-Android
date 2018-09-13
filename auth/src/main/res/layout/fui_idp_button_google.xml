@@ -4,7 +4,7 @@
     android:id="@+id/google_button"
     style="@style/FirebaseUI.AccountChooserButton.Google"
     android:text="@string/fui_sign_in_with_google"
-    fontPath="fonts/Raleway-Regular.otf"
+    fontPath="fonts/Roboto-Regular.ttf"
     tools:ignore="MissingPrefix,UnusedIds" /> <!-- Used in tests -->
 
 
