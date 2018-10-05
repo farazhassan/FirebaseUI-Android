@@ -71,4 +71,7 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">[%1$s] をタップすると、%2$s と %3$s に同意したことになり、SMS が送信されます。データ通信料がかかることがあります。</string>
     <string name="fui_sms_terms_of_service_only_extended">[%1$s] をタップすると、%2$s に同意したことになり、SMS が送信されます。データ通信料がかかることがあります。</string>
     <string name="fui_sms_privacy_policy_only_extended">[%1$s] をタップすると、%2$s に同意したことになり、SMS が送信されます。データ通信料がかかることがあります。</string>
+    <string name="fui_sign_in_or">または</string>
+    <string name="fui_we_will_never_post_to_facebook">あなたのFacebookには反映されません</string>
+    <string name="fui_sign_one_step_away_from_report">後一ステップであなたのスキンレポートが見れます</string>
 </resources>

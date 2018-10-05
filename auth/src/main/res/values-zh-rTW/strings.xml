@@ -71,4 +71,7 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">輕觸 [%1$s] 即表示您同意接受我們的《%2$s》和《%3$s》。系統將會傳送簡訊給您，不過您可能需要支付簡訊和數據傳輸費用。</string>
     <string name="fui_sms_terms_of_service_only_extended">輕觸 [%1$s] 即表示您同意接受我們的《%2$s》。系統將會傳送簡訊給您，不過您可能需要支付簡訊和數據傳輸費用。</string>
     <string name="fui_sms_privacy_policy_only_extended">輕觸 [%1$s] 即表示您同意接受我們的《%2$s》。系統將會傳送簡訊給您，不過您可能需要支付簡訊和數據傳輸費用。</string>
+    <string name="fui_sign_in_or">或是</string>
+    <string name="fui_sign_one_step_away_from_report">只差一步就能看到你的肌膚報告了</string>
+    <string name="fui_we_will_never_post_to_facebook">我們永遠不會發佈到你的Facebook</string>
 </resources>

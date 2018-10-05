@@ -71,4 +71,7 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">En appuyant sur “%1$s”, vous acceptez les %2$s et les %3$s. Vous déclencherez peut-être l\'envoi d\'un SMS. Des frais de messages et de données peuvent être facturés.</string>
     <string name="fui_sms_terms_of_service_only_extended">En appuyant sur “%1$s”, vous acceptez les %2$s. Vous déclencherez peut-être l\'envoi d\'un SMS. Des frais de messages et de données peuvent être facturés.</string>
     <string name="fui_sms_privacy_policy_only_extended">En appuyant sur “%1$s”, vous acceptez les %2$s. Vous déclencherez peut-être l\'envoi d\'un SMS. Des frais de messages et de données peuvent être facturés.</string>
+    <string name="fui_sign_in_or">OU</string>
+    <string name="fui_we_will_never_post_to_facebook">Vos résultats ne seront pas publiés sur Facebook</string>
+    <string name="fui_sign_one_step_away_from_report">Plus qu\'une étape avant de voir le résultat de votre analyse</string>
 </resources>

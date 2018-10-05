@@ -71,4 +71,7 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">Dengan mengetik “%1$s”, anda menyatakan bahawa anda menerima %2$s dan %3$s kami. SMS akan dihantar. Tertakluk pada kadar mesej &amp; data.</string>
     <string name="fui_sms_terms_of_service_only_extended">Dengan mengetik “%1$s”, anda menyatakan bahawa anda menerima %2$s kami. SMS akan dihantar. Tertakluk pada kadar mesej &amp; data.</string>
     <string name="fui_sms_privacy_policy_only_extended">Dengan mengetik “%1$s”, anda menyatakan bahawa anda menerima %2$s kami. SMS akan dihantar. Tertakluk pada kadar mesej &amp; data.</string>
+    <string name="fui_sign_in_or">ATAU</string>
+    <string name="fui_we_will_never_post_to_facebook">Kami tidak akan mengirim ke Facebook anda</string>
+    <string name="fui_sign_one_step_away_from_report">Satu langkah lagi dari melihat laporan kulit anda</string>
 </resources>
