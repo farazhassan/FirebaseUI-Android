@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">ATAU</string>
     <string name="fui_we_will_never_post_to_facebook">Kami tidak akan mengirim ke Facebook anda</string>
     <string name="fui_sign_one_step_away_from_report">Satu langkah lagi dari melihat laporan kulit anda</string>
+    <string name="fui_enter_email_to_continue">Masukkan emel anda untuk teruskan</string>
+    <string name="fui_welcome">Selamat datang ke TroveSkin</string>
 </resources>

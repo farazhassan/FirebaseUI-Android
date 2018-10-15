@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">或是</string>
     <string name="fui_sign_one_step_away_from_report">只差一步就能看到你的肌膚報告了</string>
     <string name="fui_we_will_never_post_to_facebook">我們永遠不會發佈到你的Facebook</string>
+    <string name="fui_enter_email_to_continue">輸入你的email繼續</string>
+    <string name="fui_welcome">歡迎來到TroveSkin</string>
 </resources>

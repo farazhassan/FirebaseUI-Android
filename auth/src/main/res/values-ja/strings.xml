@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">または</string>
     <string name="fui_we_will_never_post_to_facebook">あなたのFacebookには反映されません</string>
     <string name="fui_sign_one_step_away_from_report">後一ステップであなたのスキンレポートが見れます</string>
+    <string name="fui_enter_email_to_continue">あなたのEメールアドレスを記入して続ける</string>
+    <string name="fui_welcome">Troveskinへようこそ</string>
 </resources>

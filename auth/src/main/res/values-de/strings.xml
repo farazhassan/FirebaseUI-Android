@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">ODER</string>
     <string name="fui_we_will_never_post_to_facebook">Wir werden niemals auf deinem Facebookprofil posten</string>
     <string name="fui_sign_one_step_away_from_report">Du bist nur einen Schritt von deinem Hautbericht entfernt</string>
+    <string name="fui_enter_email_to_continue">Gib deine E-Mail ein, um fortzufahren</string>
+    <string name="fui_welcome">Willkommen bei TroveSkin</string>
 </resources>

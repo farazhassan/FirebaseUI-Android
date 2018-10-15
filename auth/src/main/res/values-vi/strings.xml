@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">또는</string>
     <string name="fui_we_will_never_post_to_facebook">저희는 절대 페이스북에 게시하지 않아요</string>
     <string name="fui_sign_one_step_away_from_report">Còn một bước để xem báo cáo da</string>
+    <string name="fui_enter_email_to_continue">Điền email để tiếp tục</string>
+    <string name="fui_welcome">Chào mừng đến với TroveSkin</string>
 </resources>

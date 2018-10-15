@@ -74,4 +74,6 @@
     <string name="fui_sign_in_or">ИЛИ</string>
     <string name="fui_we_will_never_post_to_facebook">Мы никогда не запостим Ваши ответы на Facebook</string>
     <string name="fui_sign_one_step_away_from_report">Остался один шаг до просмотра отчёта состояния Вашей кожи</string>
+    <string name="fui_welcome">Добро пожаловать в TroveSkin!</string>
+    <string name="fui_enter_email_to_continue">Введите адрес своей эл. почты,  чтобы продолжить</string>
 </resources>
