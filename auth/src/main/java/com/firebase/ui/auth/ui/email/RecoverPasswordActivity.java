@@ -107,7 +107,7 @@ public class RecoverPasswordActivity extends AppCompatBase implements View.OnCli
         mEmailEditText = findViewById(R.id.email);
         mEmailFieldValidator = new EmailFieldValidator(mEmailInputLayout);
 
-        mEmailInputLayout.setTypeface(TypefaceUtils.load(getAssets(), "fonts/Raleway-Regular.otf"));
+        mEmailInputLayout.setTypeface(TypefaceUtils.load(getAssets(), "fonts/Roboto-Regular.ttf"));
         String email = getIntent().getStringExtra(ExtraConstants.EMAIL);
         if (email != null) {
             mEmailEditText.setText(email);

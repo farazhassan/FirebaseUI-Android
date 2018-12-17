@@ -135,9 +135,9 @@ public class RegisterEmailFragment extends FragmentBase implements
         boolean requireName = emailConfig.getParams()
                 .getBoolean(ExtraConstants.REQUIRE_NAME, true);
 
-        mEmailInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
-        nameInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
-        mPasswordInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
+        mEmailInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Roboto-Regular.ttf"));
+        nameInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Roboto-Regular.ttf"));
+        mPasswordInput.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Roboto-Regular.ttf"));
 
         mPasswordFieldValidator = new PasswordFieldValidator(
                 mPasswordInput,

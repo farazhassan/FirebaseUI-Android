@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:textIsSelectable="false"
-        fontPath="fonts/Raleway-Regular.otf"
+        fontPath="fonts/Roboto-Regular.ttf"
         tools:ignore="MissingPrefix"/>
 
 </LinearLayout>

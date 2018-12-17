@@ -5,5 +5,5 @@
     android:id="@+id/phone_button"
     style="@style/FirebaseUI.AccountChooserButton.Phone"
     android:text="@string/fui_sign_in_with_phone"
-    fontPath="fonts/Raleway-Regular.otf"
+    fontPath="fonts/Roboto-Regular.ttf"
     tools:ignore="MissingPrefix, UnusedIds" /> <!-- Used in tests -->

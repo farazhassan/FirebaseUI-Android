@@ -25,7 +25,7 @@
             <TextView
                 android:id="@+id/text_welcome"
                 style="@style/FirebaseUI.Text.BodyText"
-                fontPath="fonts/Raleway-Regular.otf"
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fui_body_padding_bottom"
@@ -122,7 +122,7 @@
             <TextView
                 android:id="@+id/create_account_text"
                 style="@style/FirebaseUI.Text.BodyText"
-                fontPath="fonts/Raleway-Regular.otf"
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fui_body_padding_bottom"
@@ -135,7 +135,7 @@
             <TextView
                 android:id="@+id/email_footer_tos_and_pp_text"
                 style="@style/FirebaseUI.PrivacyFooter"
-                fontPath="fonts/Raleway-Regular.otf"
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
     <Button
         android:id="@+id/button_create"
         style="@style/FirebaseUI.SignInButton"
-        fontPath="fonts/Raleway-SemiBold.ttf"
+        fontPath="fonts/Roboto-Medium.ttf"
         android:text="@string/fui_title_register_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

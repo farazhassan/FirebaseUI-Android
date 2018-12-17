@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/text_or"
-        fontPath="fonts/Raleway-Regular.otf"
+        fontPath="fonts/Roboto-Regular.ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fui_auth_method_button_drawablePadding"

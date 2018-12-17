@@ -4,5 +4,5 @@
     android:id="@+id/twitter_button"
     style="@style/FirebaseUI.AccountChooserButton.Twitter"
     android:text="@string/fui_sign_in_with_twitter"
-    fontPath="fonts/Raleway-Regular.otf"
+    fontPath="fonts/Roboto-Regular.ttf"
     tools:ignore="MissingPrefix,UnusedIds" /> <!-- Used in tests -->

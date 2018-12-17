@@ -102,7 +102,7 @@ public class CheckEmailFragment extends FragmentBase implements
         mEmailLayout.setOnClickListener(this);
         mEmailEditText.setOnClickListener(this);
 
-        mEmailLayout.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Raleway-Regular.otf"));
+        mEmailLayout.setTypeface(TypefaceUtils.load(getActivity().getAssets(), "fonts/Roboto-Regular.ttf"));
 
         ImeHelper.setImeOnDoneListener(mEmailEditText, this);
 

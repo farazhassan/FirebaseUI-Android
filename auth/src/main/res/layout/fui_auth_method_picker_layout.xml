@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/text_one_step_form_report"
-        fontPath="fonts/Raleway-Regular.otf"
+        fontPath="fonts/Roboto-Regular.ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -71,10 +71,12 @@
     <TextView
         android:id="@+id/main_tos_and_pp"
         style="@style/FirebaseUI.Text.BodyText"
-        fontPath="fonts/Raleway-Regular.otf"
-        android:layout_width="wrap_content"
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="@dimen/fui_field_padding_vert"
         android:gravity="center"
         android:textColor="?android:textColorTertiary"
