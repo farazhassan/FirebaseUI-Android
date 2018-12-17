@@ -71,4 +71,9 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">Bằng cách nhấn vào “%1$s”, bạn cho biết rằng bạn chấp nhận %2$s và %3$s của chúng tôi. Bạn có thể nhận được một tin nhắn SMS. Cước tin nhắn và dữ liệu có thể áp dụng.</string>
     <string name="fui_sms_terms_of_service_only_extended">Bằng cách nhấn vào “%1$s”, bạn cho biết rằng bạn chấp nhận %2$s của chúng tôi. Bạn có thể nhận được một tin nhắn SMS. Cước tin nhắn và dữ liệu có thể áp dụng.</string>
     <string name="fui_sms_privacy_policy_only_extended">Bằng cách nhấn vào “%1$s”, bạn cho biết rằng bạn chấp nhận %2$s của chúng tôi. Bạn có thể nhận được một tin nhắn SMS. Cước tin nhắn và dữ liệu có thể áp dụng.</string>
+    <string name="fui_sign_in_or">또는</string>
+    <string name="fui_we_will_never_post_to_facebook">저희는 절대 페이스북에 게시하지 않아요</string>
+    <string name="fui_sign_one_step_away_from_report">Còn một bước để xem báo cáo da</string>
+    <string name="fui_enter_email_to_continue">Điền email để tiếp tục</string>
+    <string name="fui_welcome">Chào mừng đến với TroveSkin</string>
 </resources>

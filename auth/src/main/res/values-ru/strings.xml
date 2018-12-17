@@ -71,4 +71,9 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">Нажимая кнопку “%1$s”, вы принимаете %2$s и %3$s, а также соглашаетесь получить SMS. За его отправку и обмен данными может взиматься плата.</string>
     <string name="fui_sms_terms_of_service_only_extended">Нажимая кнопку “%1$s”, вы принимаете %2$s и соглашаетесь получить SMS. За его отправку и обмен данными может взиматься плата.</string>
     <string name="fui_sms_privacy_policy_only_extended">Нажимая кнопку “%1$s”, вы принимаете %2$s и соглашаетесь получить SMS. За его отправку и обмен данными может взиматься плата.</string>
+    <string name="fui_sign_in_or">ИЛИ</string>
+    <string name="fui_we_will_never_post_to_facebook">Мы никогда не запостим Ваши ответы на Facebook</string>
+    <string name="fui_sign_one_step_away_from_report">Остался один шаг до просмотра отчёта состояния Вашей кожи</string>
+    <string name="fui_welcome">Добро пожаловать в TroveSkin!</string>
+    <string name="fui_enter_email_to_continue">Введите адрес своей эл. почты,  чтобы продолжить</string>
 </resources>

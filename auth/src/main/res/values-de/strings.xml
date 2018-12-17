@@ -71,4 +71,9 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">Indem Sie auf “%1$s” tippen, stimmen Sie unseren %2$s und unserer %3$s zu. Sie erhalten möglicherweise eine SMS und es können Gebühren für die Nachricht und die Datenübertragung anfallen.</string>
     <string name="fui_sms_terms_of_service_only_extended">Indem Sie auf “%1$s” tippen, stimmen Sie unseren %2$s zu. Sie erhalten möglicherweise eine SMS und es können Gebühren für die Nachricht und die Datenübertragung anfallen.</string>
     <string name="fui_sms_privacy_policy_only_extended">Indem Sie auf “%1$s” tippen, stimmen Sie unserer %2$s zu. Sie erhalten möglicherweise eine SMS und es können Gebühren für die Nachricht und die Datenübertragung anfallen.</string>
+    <string name="fui_sign_in_or">ODER</string>
+    <string name="fui_we_will_never_post_to_facebook">Wir werden niemals auf deinem Facebookprofil posten</string>
+    <string name="fui_sign_one_step_away_from_report">Du bist nur einen Schritt von deinem Hautbericht entfernt</string>
+    <string name="fui_enter_email_to_continue">Gib deine E-Mail ein, um fortzufahren</string>
+    <string name="fui_welcome">Willkommen bei TroveSkin</string>
 </resources>

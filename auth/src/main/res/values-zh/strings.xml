@@ -71,4 +71,9 @@
     <string name="fui_sms_terms_of_service_and_privacy_policy_extended">点按“%1$s”即表示您接受我们的%2$s和%3$s。系统会向您发送一条短信。这可能会产生短信费用和上网流量费。</string>
     <string name="fui_sms_terms_of_service_only_extended">点按“%1$s”即表示您接受我们的%2$s。系统会向您发送一条短信。这可能会产生短信费用和上网流量费。</string>
     <string name="fui_sms_privacy_policy_only_extended">点按“%1$s”即表示您接受我们的%2$s。系统会向您发送一条短信。这可能会产生短信费用和上网流量费。</string>
+    <string name="fui_sign_in_or">或是</string>
+    <string name="fui_sign_one_step_away_from_report">只差一步就能看到你的肌膚報告了</string>
+    <string name="fui_we_will_never_post_to_facebook">我們永遠不會發佈到你的Facebook</string>
+    <string name="fui_enter_email_to_continue">輸入你的email繼續</string>
+    <string name="fui_welcome">歡迎來到TroveSkin</string>
 </resources>
